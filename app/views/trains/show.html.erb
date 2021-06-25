@@ -12,7 +12,46 @@
     </strong>
   <% end %>
 </p>
+<p>
+  <% if @train.current_station %>
+    <strong>current station: <%= @train.current_station.title %></strong>
+  <% else %>
+    <strong>Station not assigned
+    </strong>
+  <% end %>
+</p>
+
+<% if @train.carriages %>
+  <p>
+    <storng>count of business</storng> <%= @train.business_count %></p>
+  <p>
+    <storng>count of eco</storng> <%= @train.eco_count %></p>
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Type</th>
+      <th>Top Seats</th>
+      <th>Bottom Seats</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @train.carriages.each do |carriage| %>
+      <tr>
+        <td><%= carriage.id %></td>
+        <td><%= carriage.kind %></td>
+        <td><%= carriage.top_seats %></td>
+        <td><%= carriage.bottom_seats %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <br>
+<% else %>
+  nothing
+<% end %>
 
 
+<%= link_to 'Add new carriage', new_carriage_path %>
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
