@@ -1,7 +1,19 @@
 class Carriage < ActiveRecord::Base
-  validates :kind, :bottom_seats, :top_seats, presence: true
+  TYPES = %w[CoupeCarriage CvCarriage EcoCarriage SeatCarriage].freeze
+  validates :type, :number, presence: true
+  validates :number, uniqueness: { scope: :train_id }
   belongs_to :train
 
-  enum kind: %i[eco business]
+  before_validation :set_number
+
+  def set_number
+    self.number ||= last_number + 1
+  end
+
+  protected
+
+  def last_number
+    train.carriages.pluck(:number).max || 0
+  end
 
 end
