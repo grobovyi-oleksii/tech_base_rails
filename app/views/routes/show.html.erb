@@ -5,28 +5,35 @@
   <%= @route.name %>
 </p>
 <p>
-<% if @route.railway_stations %>
-  <strong>Stations:</strong>
-  <% @route.railway_stations.each do |station| %>
-    <ul>
-      <li><%= station.title %></li>
-    </ul>
-  <% end %>
-<% else %>
-  <strong>there are no stations in the route</strong>
-<% end %>
-</p>
-<p>
-  <% if @route.trains %>
-    <strong>Trains: </strong>
-    <% @route.trains.each do |train| %>
-      <ul>
-        <li><%= train.number %></li>
-      </ul>
+  <% if @route.railway_stations %>
+    <strong>Stations:</strong>
+    <% @route.railway_stations.ordered.each do |station| %>
+      <li>
+      <p> <strong><%= station.title %></strong>
+        <%= form_tag update_position_railway_station_path(station.id), method: :post do %>
+          <%= hidden_field_tag :route_id, @route.id %>
+          <%= label_tag :station_index %>
+          <%= number_field_tag :station_index, station.index(@route.id) %>
+          <%= submit_tag 'Save' %>
+        <% end %>
+      </p>
+      </li>
     <% end %>
   <% else %>
-    <strong>there are no trains on the route</strong>
+    <strong>there are no stations in the route</strong>
   <% end %>
   </p>
-  <%= link_to 'Edit', edit_route_path(@route) %> |
-  <%= link_to 'Back', routes_path %>
+  <p>
+    <% if @route.trains %>
+      <strong>Trains: </strong>
+      <% @route.trains.each do |train| %>
+        <ul>
+          <li><%= train.number %></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <strong>there are no trains on the route</strong>
+    <% end %>
+    </p>
+    <%= link_to 'Edit', edit_route_path(@route) %> |
+    <%= link_to 'Back', routes_path %>

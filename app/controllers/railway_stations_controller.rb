@@ -1,5 +1,5 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: %i[ show edit update destroy ]
+  before_action :set_railway_station, only: %i[ show edit update destroy update_position ]
 
   # GET /railway_stations or /railway_stations.json
   def index
@@ -42,6 +42,15 @@ class RailwayStationsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @railway_station.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def update_position
+    route = Route.find(params[:route_id])
+    if @railway_station.update_position(route, params[:station_index])
+      redirect_to route_url(route), notice: 'Station index was successfully updated.'
+    else
+      redirect_to route_url(route)
     end
   end
 

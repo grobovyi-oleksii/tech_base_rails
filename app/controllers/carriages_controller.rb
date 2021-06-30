@@ -1,9 +1,11 @@
 class CarriagesController < ApplicationController
-  before_action :set_carriage, only: %i[  edit update destroy ]
+  before_action :set_carriage, only: %i[edit update destroy show]
 
   def new
     @carriage = Carriage.new
   end
+
+  def show; end
 
   def edit; end
 
@@ -37,6 +39,6 @@ class CarriagesController < ApplicationController
   end
 
   def carriage_params
-    params.require(:carriage).permit(:kind, :top_seats, :bottom_seats, :train_id)
+    params.require(:carriage).permit(:type, :top_seats, :bottom_seats, :train_id, :side_bottom_seats, :side_top_seats, :eco_seats)
   end
 end
