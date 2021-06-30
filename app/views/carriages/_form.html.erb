@@ -1,4 +1,4 @@
-<%= form_with(model: @carriage) do |form| %>
+<%= form_with(model: @carriage.becomes(Carriage)) do |form| %>
   <%= render "common/errors", resource: @carriage %>
 
   <div class="field">
@@ -10,14 +10,26 @@
     <%= form.label :top_seats, 'Top seats' %>
     <%= form.number_field :top_seats %>
   </div>
-
   <div class="field">
-    <%= form.label :kind, 'Type' %>
-    <%= form.select :kind, Carriage.kinds.keys %>
+    <%= form.label :side_top_seats, 'Side top seats' %>
+    <%= form.number_field :side_top_seats %>
+  </div>
+  <div class="field">
+    <%= form.label :side_bottom_seats, 'Side bottom seats' %>
+    <%= form.number_field :side_bottom_seats %>
+  </div>
+  <div class="field">
+    <%= form.label :eco_seats, 'Eco seats' %>
+    <%= form.number_field :eco_seats %>
   </div>
 
   <div class="field">
-    <%= form.label :train, 'Train'%>
+    <%= form.label :type %><br>
+    <%= form.select :type, Carriage::TYPES, selected: @carriage.type || 'EcoCarriage' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :train, 'Train' %>
     <%= form.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
