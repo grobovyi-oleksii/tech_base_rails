@@ -57,6 +57,15 @@ class RailwayStationsController < ApplicationController
     redirect_to route_url(route), notice: 'Station datetime was successfully updated'
   end
 
+  def update_datetime
+    route = Route.find(params[:route_id])
+    if @railway_station.update_datetime(route, params[:arrival_time], params[:departure_time])
+      redirect_to route_url(route), notice: 'Station datetime was successfully updated'
+    else
+      redirect_to route_url(route)
+    end
+  end
+
   # DELETE /railway_stations/1 or /railway_stations/1.json
   def destroy
     @railway_station.destroy
