@@ -9,11 +9,4 @@ class Train < ApplicationRecord
     carriages.where(type: carriage_type).sum(seats_type)
   end
 
-  def business_count
-    business_carriages.count
-  end
-
-  def eco_count
-    eco_carriages.count
-  end
 end

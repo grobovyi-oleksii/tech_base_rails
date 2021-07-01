@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
-  resources :carriages
-  resources :trains
+  resources :trains do
+    resources :carriages, shallow: true
+    resources :tickets, shallow: true
+  end
   resources :railway_stations do
     member do
       post :update_position
+      post :update_datetime
     end
   end
   resources :routes
+  resource :search, only: %i[show new edit] do
+    post '/', to: 'searches#search'
+  end
+
   get 'welcome/index'
 
   root 'welcome#index'

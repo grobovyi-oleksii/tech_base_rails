@@ -19,6 +19,19 @@ class RailwayStation < ApplicationRecord
     station_route(route)&.station_index
   end
 
+  def arrival_time(route)
+    station_route(route)&.arrival_time
+  end
+
+  def departure_time(route)
+    station_route(route)&.departure_time
+  end
+
+  def update_datetime(route, arrival_time, departure_time)
+    station_route = station_route(route)
+    station_route&.update(arrival_time: arrival_time, departure_time: departure_time)
+  end
+
   protected
 
   def station_route(route)
