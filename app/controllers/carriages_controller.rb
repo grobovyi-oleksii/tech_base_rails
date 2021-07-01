@@ -1,29 +1,21 @@
 class CarriagesController < ApplicationController
-  before_action :set_carriage, only: %i[edit update destroy show]
+  before_action :set_train, only: %i[create new]
 
   def new
     @carriage = Carriage.new
   end
 
-  def show; end
-
-  def edit; end
-
-  def create
-    @carriage = Carriage.new(carriage_params)
-
-    if @carriage.save
-      redirect_to trains_url
-    else
-      render :new
-    end
+  def show
+    @carriage = Carriage.find(params[:id])
   end
 
-  def update
-    if @carriage.update(carriage_params)
-      redirect_to trains_url
+  def create
+    @carriage = @train.carriages.new(carriage_params)
+
+    if @carriage.save
+      redirect_to train_path(@train)
     else
-      redirect_to edit
+      render :new
     end
   end
 
@@ -34,11 +26,12 @@ class CarriagesController < ApplicationController
 
   private
 
-  def set_carriage
-    @carriage = Carriage.find(params[:id])
+  def set_train
+    @train = Train.find(params[:train_id])
   end
 
   def carriage_params
-    params.require(:carriage).permit(:type, :top_seats, :bottom_seats, :train_id, :side_bottom_seats, :side_top_seats, :eco_seats)
+    params.require(:carriage).permit(:type, :top_seats, :bottom_seats, :train_id, :side_bottom_seats, :side_top_seats,
+                                     :eco_seats)
   end
 end
