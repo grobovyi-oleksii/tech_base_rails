@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_131749) do
+ActiveRecord::Schema.define(version: 2021_07_01_115101) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "top_seats"
