@@ -11,7 +11,7 @@ class RailwayStation < ApplicationRecord
   }
 
   def set_default_index
-    self.station_index ||= station_index(+1)
+    self.station_index ||= station_index + 1
   end
 
   def update_position(route, index)
