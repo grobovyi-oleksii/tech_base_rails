@@ -11,7 +11,7 @@ Rails.application.configure do
     user_name: 'groboviyoleksiilab@gmail.com',
     password: 'ijmyjnhgmsuirwhh',
     authentication: 'plain',
-    enable_starttls_auto: true
+    # enable_starttls_auto: true
   }
   # Settings specified here will take precedence over those in config/application.rb.
 
