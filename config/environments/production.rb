@@ -1,18 +1,18 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'railway-stations.herokuapp.com', protocol: 'https' }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name: 'apikey',
-    password: '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',
-    domain: 'railway-stations.herokuapp.com',
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  # config.action_mailer.default_url_options = { host: 'railway-stations.herokuapp.com', protocol: 'https' }
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   user_name: 'apikey',
+  #   password: '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',
+  #   domain: 'railway-stations.herokuapp.com',
+  #   address: 'smtp.sendgrid.net',
+  #   port: 587,
+  #   authentication: :plain,
+  #   enable_starttls_auto: true
+  # }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -74,7 +74,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "tech_base_rails_production"
 
-  config.action_mailer.perform_caching = true
+  config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
