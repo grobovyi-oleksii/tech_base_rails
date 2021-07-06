@@ -46,8 +46,6 @@ group :development do
   gem 'spring'
 
   gem 'letter_opener'
-
-  gem 'sendgrid-ruby'
 end
 
 group :test do
