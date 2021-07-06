@@ -23,9 +23,9 @@ Rails.application.routes.draw do
       end
     end
     resources :routes
+    resource :welcomes
   end
-  get 'welcome/index'
 
-  root 'welcome#index'
+  root 'searches#show'
 
 end
