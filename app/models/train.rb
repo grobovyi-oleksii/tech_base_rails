@@ -5,19 +5,11 @@ class Train < ApplicationRecord
   belongs_to :route
   belongs_to :current_station, class_name: 'RailwayStation', foreign_key: :current_station_id
 
-  def business_carriages
-    carriages.business
-  end
-
-  def eco_carriages
-    carriages.eco
-  end
-
   def business_count
-    business_carriages.count
+    carriages.business.count
   end
 
   def eco_count
-    eco_carriages.count
+    carriages.eco.count
   end
 end
