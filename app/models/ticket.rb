@@ -12,7 +12,7 @@ class Ticket < ActiveRecord::Base
     "#{base_station.title} - #{end_station.title}"
   end
 
-  def send_notification
+  def send_buy_notification
     TicketsMailer.buy_ticket(user, self).deliver_now
   end
 
