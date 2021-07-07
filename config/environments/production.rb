@@ -4,7 +4,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'railway-stations.herokuapp.com' }
   config.action_mailer.delivery_method :sendgrid
-  config.action_mailer.smtp_setting = {
+  config.action_mailer.smtp_settings = {
     user_name: 'apikey',
     password: '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',
     domain: 'herokuapp.com',
