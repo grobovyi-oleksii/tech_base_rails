@@ -8,10 +8,19 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
 import "./src/application.scss"
 import "bootstrap/dist/js/bootstrap"
 import "bootstrap/dist/css/bootstrap"
 
+require('jquery')
+require('packs/railway_stations')
+require('packs/routes')
+require('packs/trains')
+require('packs/carriages')
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import "controllers"
