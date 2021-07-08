@@ -7,8 +7,6 @@ class Route < ActiveRecord::Base
   before_validation :set_name
   before_validation :set_default_index
 
-  scope :ordered_railway_stations, -> { joins(:railway_stations_routes).order('railway_stations_routes.station_index') }
-
   private
 
   def set_default_index
