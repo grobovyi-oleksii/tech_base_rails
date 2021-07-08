@@ -2,10 +2,10 @@
 
 <h1>Routes</h1>
 
-<table>
+<table class="table">
   <thead>
   <tr>
-    <th>Routes</th>
+    <th>Title</th>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -13,10 +13,15 @@
   <tbody>
   <% @routes.each do |route| %>
     <tr>
-      <td><%= route.name %></td>
-      <td><%= link_to 'Show', admin_route_path(route) %></td>
-      <td><%= link_to 'Edit', edit_admin_route_path(route) %></td>
-      <td><%= link_to 'Destroy', admin_route_path(route), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <div id="route_title_<%= route.id %>">
+          <%= route.name %>
+        </div>
+        <%= render 'form', route: route, hidden: true %>
+      </td>
+      <td><%= link_to 'Show', [:admin, route] %></td>
+      <td><%= link_to 'Edit', '', class: 'edit_route', data: { route_id: route.id } %></td>
+      <td><%= link_to 'Destroy', [:admin, route], method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>

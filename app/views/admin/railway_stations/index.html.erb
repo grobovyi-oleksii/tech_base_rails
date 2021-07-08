@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Railway Stations</h1>
-
-<table>
+<table class="table">
   <thead>
   <tr>
     <th>Title</th>
@@ -11,10 +9,23 @@
   </thead>
 
   <tbody>
-  <%= render @railway_stations %>
+  <% @railway_stations.each do |railway_station| %>
+    <tr>
+      <td>
+        <div id="railway_station_title_<%= railway_station.id %>">
+          <%= railway_station.title %>
+        </div>
+        <%= render 'form', railway_station: railway_station, hidden: true %>
+      </td>
+      <td><%= link_to 'Show', [:admin, railway_station] %></td>
+      <td><%= link_to 'Edit', '', class: 'edit_station', data: { station_id: railway_station.id } %></td>
+      <td><%= link_to 'Destroy', admin_railway_station_path(railway_station), method: :delete %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
+
 
 <%= link_to 'New Railway Station', new_admin_railway_station_path %>

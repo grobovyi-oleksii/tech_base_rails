@@ -1,5 +1,5 @@
-<%= form_for [:admin, @route] do |form| %>
-  <%= render 'common/errors', resource: @route %>
+<%= form_for [:admin, route], html: { style: "display: #{hidden ? 'none' : 'display'}" } do |form| %>
+  <%= render 'common/errors', resource: route %>
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
