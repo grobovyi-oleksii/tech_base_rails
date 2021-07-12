@@ -5,7 +5,7 @@ class Train < ApplicationRecord
   belongs_to :route
   belongs_to :current_station, class_name: 'RailwayStation', foreign_key: :current_station_id
 
-  def counter_seats_by_type(carriage_type, seats_type)
+  def number_of_seats_by_type(carriage_type, seats_type)
     carriages.where(type: carriage_type).sum(seats_type)
   end
 
