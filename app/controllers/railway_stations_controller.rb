@@ -47,7 +47,7 @@ class RailwayStationsController < ApplicationController
 
   def update_position
     route = Route.find(params[:route_id])
-    redirect_to route_url(route) unless @railway_station.update_position(route, params[:station_index])
+    return redirect_to route_url(route) unless @railway_station.update_position(route, params[:station_index])
     redirect_to route_url(route), notice: 'Station index was successfully updated.'
   end
 
