@@ -7,19 +7,18 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    return unless RailwayStation.exists?(params[:start_station]) && RailwayStation.exists?(params[:end_station])
+
     @start_station = RailwayStation.find(params[:start_station])
     @end_station = RailwayStation.find(params[:end_station])
-
   end
 
   def create
     @ticket = @train.tickets.new(ticket_params)
     @ticket.user = User.first
-    if @ticket.save
-      redirect_to ticket_path(@train), notice: 'Ticket was created!'
-    else
-      redirect_to new_train_ticket_path(@train), notice: 'Something wrong'
-    end
+    return redirect_to new_train_ticket_path(@train), notice: 'Something wrong' unless @ticket.save
+
+    redirect_to ticket_path(@train), notice: 'Ticket was created!'
   end
 
   private

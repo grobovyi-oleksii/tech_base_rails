@@ -8,10 +8,10 @@ class Route < ActiveRecord::Base
   before_validation :set_default_index
 
   scope :ordered_railway_stations, -> { joins(:railway_stations_routes).order('railway_stations_routes.station_index') }
-  scope :with_station, ->(station) { Route.joins(:railway_stations).where('railway_stations.id = ?', station.id) }
+  scope :with_station, ->(station) { joins(:railway_stations).where('railway_stations.id = ?', station.id) }
 
   def self.find_routes(start_station, end_station)
-    Route.with_station(start_station) & Route.with_station(end_station)
+    with_station(start_station) & with_station(end_station)
   end
 
   def first_station
