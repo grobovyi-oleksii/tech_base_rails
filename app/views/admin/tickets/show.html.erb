@@ -15,8 +15,7 @@
   <td><%= @ticket.first_name_user %></td>
   <td><%= @ticket.last_name_user %></td>
   <td><%= @ticket.passport_user %></td>
-  <td><%= "from #{@ticket.base_station} to #{@ticket.end_station}" %></td>
-  <td><%= link_to 'Edit', edit_admin_ticket_path(@ticket)%></td>
+  <td><%= "from #{@ticket.base_station.title} to #{@ticket.end_station.title}" %></td>
   <td><%= link_to 'Delete', admin_ticket_path(@ticket), method: :delete %></td>
   </tbody>
 </table>

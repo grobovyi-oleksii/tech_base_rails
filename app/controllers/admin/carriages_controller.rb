@@ -11,12 +11,9 @@ class Admin::CarriagesController < Admin::BaseController
 
   def create
     @carriage = @train.carriages.new(carriage_params)
+    return render :new unless @carriage.save
 
-    if @carriage.save
-      redirect_to admin_train_path(@train)
-    else
-      render :new
-    end
+    redirect_to admin_train_path(@train)
   end
 
   def destroy

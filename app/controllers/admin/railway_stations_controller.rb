@@ -23,7 +23,9 @@ class Admin::RailwayStationsController < Admin::BaseController
 
     respond_to do |format|
       if @railway_station.save
-        format.html { redirect_to admin_railway_station_path(@railway_station), notice: 'Railway station was successfully created.' }
+        format.html do
+          redirect_to admin_railway_station_path(@railway_station), notice: 'Railway station was successfully created.'
+        end
         format.json { render :show, status: :created, location: @railway_station }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,12 +50,15 @@ class Admin::RailwayStationsController < Admin::BaseController
   def update_position
     route = Route.find(params[:route_id])
     return redirect_to admin_route_path(route) unless @railway_station.update_position(route, params[:station_index])
+
     redirect_to admin_route_path(route), notice: 'Station index was successfully updated.'
   end
 
   def update_datetime
     route = Route.find(params[:route_id])
-    redirect_to admin_route_path(route) unless @railway_station.update_datetime(route, params[:arrival_time], params[:departure_time])
+    return redirect_to admin_route_path(route) unless @railway_station.update_datetime(route, params[:arrival_time],
+                                                                                       params[:departure_time])
+
     redirect_to admin_route_path(route), notice: 'Station datetime was successfully updated'
   end
 
@@ -61,7 +66,9 @@ class Admin::RailwayStationsController < Admin::BaseController
   def destroy
     @railway_station.destroy
     respond_to do |format|
-      format.html { redirect_to admin_railway_station_path(@railway_station), notice: 'Railway station was successfully destroyed.' }
+      format.html do
+        redirect_to admin_railway_station_path(@railway_station), notice: 'Railway station was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
