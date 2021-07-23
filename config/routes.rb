@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     resources :tickets, only: %i[index show destroy ]
     resources :railway_stations do
       member do
-        post :update_position
-        post :update_datetime
+        put :update_position
+        put :update_datetime
       end
     end
     resources :routes

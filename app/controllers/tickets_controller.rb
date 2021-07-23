@@ -23,11 +23,11 @@ class TicketsController < ApplicationController
     @ticket.user = current_user
     return redirect_to new_train_ticket_path(@train), notice: 'Something wrong' unless @ticket.save
 
-    redirect_to ticket_path(@train), notice: 'Ticket was created!'
+    redirect_to admin_ticket_path(@train), notice: 'Ticket was created!'
   end
 
   def destroy
-    redirect_to tickets_path if @ticket.destroy
+    redirect_to admin_tickets_path if @ticket.destroy
   end
 
   private

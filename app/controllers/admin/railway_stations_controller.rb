@@ -64,7 +64,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def destroy
     @railway_station.destroy
     respond_to do |format|
-      format.html { redirect_to admin_railway_station_path(@railway_station), notice: 'Railway station was successfully destroyed.' }
+      format.html { redirect_to admin_railway_stations_path, notice: 'Railway station was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

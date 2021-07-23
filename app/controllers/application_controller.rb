@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     flash[:notice] = "Hi #{resource.first_name}"
     if current_user.admin?
-
+      admin_welcomes_path
     else
       root_path
     end

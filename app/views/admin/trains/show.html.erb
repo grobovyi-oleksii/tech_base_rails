@@ -22,10 +22,6 @@
 </p>
 
 <% if @train.carriages %>
-  <p>
-    <storng>count of business</storng> <%= @train.business_count %></p>
-  <p>
-    <storng>count of eco</storng> <%= @train.eco_count %></p>
   <table>
     <thead>
     <tr>
@@ -49,8 +45,6 @@
 <% else %>
   nothing
 <% end %>
-
-
 <%= link_to 'Add new carriage', new_admin_train_carriage_path(@train) %>
 <%= link_to 'Edit', edit_admin_train_path(@train) %> |
 <%= link_to 'Back', admin_trains_path %>
