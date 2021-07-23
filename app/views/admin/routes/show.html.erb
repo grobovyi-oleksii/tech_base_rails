@@ -19,14 +19,14 @@
       <tr>
         <td><%= station.title %></td>
         <td>
-          <%= form_tag update_position_admin_railway_station_path(station.id), method: :post do %>
+          <%= form_tag update_position_admin_railway_station_path(station.id), method: :put do %>
             <%= hidden_field_tag :route_id, @route.id %>
             <%= number_field_tag :station_index, station.index(@route.id) %>
             <%= submit_tag 'Save' %>
           <% end %>
         </td>
         <td>
-          <%= form_tag update_datetime_admin_railway_station_path(station.id), method: :post do %>
+          <%= form_tag update_datetime_admin_railway_station_path(station.id), method: :put do %>
             <%= hidden_field_tag :route_id, @route.id %>
             <%= time_field_tag :arrival_time, station.arrival_time(@route.id) %>
           <td><%= time_field_tag :departure_time, station.departure_time(@route.id) %></td>
