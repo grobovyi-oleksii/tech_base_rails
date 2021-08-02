@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_081640) do
+ActiveRecord::Schema.define(version: 2021_07_23_081617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carriages", force: :cascade do |t|
-    t.integer "kind"
     t.integer "top_seats"
     t.integer "bottom_seats"
     t.bigint "train_id"

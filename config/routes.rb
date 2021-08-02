@@ -17,8 +17,10 @@ Rails.application.routes.draw do
     end
     resources :tickets, only: %i[index show destroy ]
     resources :railway_stations do
-      put :update_position
-      put :update_datetime
+      member do
+        put :update_position
+        put :update_datetime
+      end
     end
     resources :routes
     resource :welcomes
