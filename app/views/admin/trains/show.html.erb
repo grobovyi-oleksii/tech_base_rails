@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @train.number %>
+</p>
+<p>
+  <% if @train.route %>
+    <strong>current route: <%= @train.route.name %></strong>
+  <% else %>
+    <strong>Route not assigned
+    </strong>
+  <% end %>
+</p>
+<p>
+  <% if @train.current_station %>
+    <strong>current station: <%= @train.current_station.title %></strong>
+  <% else %>
+    <strong>Station not assigned
+    </strong>
+  <% end %>
+</p>
+
+<% if @train.carriages %>
+  <table>
+    <thead>
+    <tr>
+      <th>Carriages</th>
+      <% if @train.order_carriage %>
+        <p><strong>From head</strong></p>
+      <% else %>
+        <p><strong>From tail</strong></p>
+      <% end %>
+    </tr>
+    </thead>
+    <tbody>
+    <% @train.carriages.each do |carriage| %>
+      <tr>
+        <td><%= link_to "#{carriage.number}", admin_carriage_path(carriage) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <br>
+<% else %>
+  nothing
+<% end %>
+<%= link_to 'Add new carriage', new_admin_train_carriage_path(@train) %>
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>

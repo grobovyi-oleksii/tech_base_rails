@@ -71,6 +71,18 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method :sendgrid
+  config.action_mailer.smtp_settings = {
+    user_name: 'apikey',
+    password: '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',
+    domain: 'herokuapp.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :login,
+    enable_starttls_auto: true
+  }
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TechBaseRails - Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="container">
+  <nav class="navbar navbar-light bg-light">
+    <form class="container-fluid justify-content-start">
+      <button class="btn btn-outline-success me-2" type="button"><%= link_to 'Trains', admin_trains_path %></button>
+      <button class="btn btn-outline-success me-2" type="button"><%= link_to 'Stations', admin_railway_stations_path %></button>
+      <button class="btn btn-outline-success me-2" type="button"><%= link_to 'Routes', admin_routes_path %></button>
+    </form>
+  </nav>
+
+  <%= yield %>
+  <footer class="fixed-bottom">
+    <strong>Hrobovyi Oleksii, 2021</strong>
+  </footer>
+</div>
+</body>
+</html>
